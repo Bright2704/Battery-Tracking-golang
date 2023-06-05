@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
@@ -29,6 +28,9 @@ func init() {
 		Username:   "dev",
 		Password:   "12345678",
 	})
+	// Auto Migrate the struct
+	
+	
 
 	// Connect to MongoDB server.
 	mongoclient, err = mongo.Connect(context.Background(), clientOptions)
@@ -44,6 +46,7 @@ func init() {
 
 	fmt.Println("Connected to MongoDB server.")
 
+
 	userc = mongoclient.Database("battery").Collection("Battert-Tracking")
 	us = service.NewRelatedNumberService(userc, ctx)
 	uc = controller.New(us)
@@ -57,6 +60,6 @@ func main() {
 	basepath := server.Group("/v1")
 	uc.RegisterUserRouts(basepath)
 
-	log.Fatal(server.Run(":9099"))
+	log.Fatal(server.Run(":9097"))
 }
 

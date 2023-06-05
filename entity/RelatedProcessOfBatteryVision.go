@@ -1,7 +1,7 @@
 package entity
 
 type RelatedProcess struct {
-	ID uint `json: "id" bson: "id"`
+	
 
 	ProcessNameIn ProcessNameIn `json: "processNameIn" bson: "processNameIn"`
 	ProcessNameOut ProcessNameOut `json: "processNameOut" bson: "processNameOut"`
@@ -10,3 +10,4 @@ type RelatedProcess struct {
 	EmployeeNameIn EmployeeNameIn `json: "employeeNameIn" bson: "employeeNameIn"`
 	EmployeeNameOut EmployeeNameOut `json: "employeeNameOut" bson: "employeeNameOut"`
 }
+

@@ -1,7 +1,7 @@
 package entity
 
 type ProcessNameOut struct {
-	ID uint `json: "id" bson: "id" `
+	
 
 	ProcessNameOut1 bool `json: "processNameOut1" bson: "processNameOut1"`
 	ProcessNameOut2 bool `json: "processNameOut2" bson: "processNameOut2"`

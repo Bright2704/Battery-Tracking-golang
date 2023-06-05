@@ -1,7 +1,7 @@
 package entity
 
 type RelatedNumber struct {
-	ID uint `json: "id" bson: "id"`
-
-	RelatedProcess RelatedProcess `json: "relatedProcess" bson: "relatedProcess"`
+	//ID             uint `gorm:"primaryKey;autoIncrement"`
+	RelatedNumber string `json: "relatedNumber" `
+	RelatedProcess RelatedProcess `json: "relatedProcess" `
 }

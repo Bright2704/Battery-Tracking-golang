@@ -1,7 +1,7 @@
 package entity
 
 type ProcessNameIn struct {
-	ID uint `json: "id" bson: "id"`
+	
 
 	ProcessNameIn1 bool `json: "processNameInComing1" bson: "processNameInComing1"`
 	ProcessNameIn2 bool `json: "processNameInComing2" bson: "processNameInComing2"`

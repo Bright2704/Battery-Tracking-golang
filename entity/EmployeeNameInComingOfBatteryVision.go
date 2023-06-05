@@ -1,7 +1,7 @@
 package entity 
 
 type EmployeeNameIn struct {
-	ID uint `json: "id" bson: "id"`
+	
 
 	EmployeeNameInComing1 string `json: "employeeNameInComing1" bson: "employeeNameInComing1`
 	EmployeeNameInComing2 string `json: "employeeNameInComing2" bson: "employeeNameInComing2`
