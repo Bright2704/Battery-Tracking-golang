@@ -15,10 +15,7 @@ type RelatedNumberServiceImpl struct {
 	ctx                     context.Context
 }
 
-// GetRelatedNumber implements RelatedNumberService
-func (*RelatedNumberServiceImpl) GetRelatedNumber(*string) (*entity.RelatedNumber, error) {
-	panic("unimplemented")
-}
+
 
 func NewRelatedNumberService(relatedNumbercollection *mongo.Collection, ctx context.Context) RelatedNumberService {
 	return &RelatedNumberServiceImpl{
@@ -32,9 +29,9 @@ func (u *RelatedNumberServiceImpl) CreateRelatedNumber(relatedNumber *entity.Rel
 	return err
 }
 
-func (u *RelatedNumberServiceImpl) GetRelatedNUmber(relatedProcess *string) (*entity.RelatedNumber, error) {
+func (u *RelatedNumberServiceImpl) GetRelatedNumber(relatedNumber *string) (*entity.RelatedNumber, error) {
 	var user *entity.RelatedNumber
-	query := bson.D{bson.E{Key: "relatedProcess", Value: relatedProcess}}
+	query := bson.D{bson.E{Key: "relatedNumber", Value: relatedNumber}}
 	err := u.relatedNumbercollection.FindOne(u.ctx, query).Decode(&user)
 	return user, err
 }
@@ -67,8 +64,9 @@ func (u *RelatedNumberServiceImpl) GetAll() ([]*entity.RelatedNumber, error) {
 }
 
 func (u *RelatedNumberServiceImpl) UpdateRelatedNumber(user *entity.RelatedNumber) error {
-	filter := bson.D{primitive.E{Key: "relatedprocess", Value: user.RelatedProcess}}
-	update := bson.D{primitive.E{Key: "$set", Value: bson.D{primitive.E{Key: "relatedProcess", Value: user.RelatedProcess}}}}
+	filter := bson.D{primitive.E{Key: "ProcessNumber", Value: user.RelatedNumber}}
+	update := bson.D{primitive.E{Key: "$set", Value: bson.D{primitive.E{Key: "relatedNumber", Value: user.RelatedNumber},
+															primitive.E{Key: "relatedProcess", Value: user.RelatedProcess}}}}
 	result, _ := u.relatedNumbercollection.UpdateOne(u.ctx, filter, update)
 	if result.MatchedCount != 1 {
 		return errors.New("no matched document found for update")

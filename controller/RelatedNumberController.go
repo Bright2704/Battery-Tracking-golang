@@ -33,7 +33,7 @@ func (uc *RelatedNumberController) CreateRelatedNumber(ctx *gin.Context) {
 }
 
 func (uc *RelatedNumberController) GetRelatedNumber(ctx *gin.Context) {
-	var username string = ctx.Param("relatedNumber")
+	var username string = ctx.Param("name")
 	RelatedNumber, err := uc.RelatedNumberService.GetRelatedNumber(&username)
 	if err != nil {
 		ctx.JSON(http.StatusBadGateway, gin.H{"message": err.Error()})
